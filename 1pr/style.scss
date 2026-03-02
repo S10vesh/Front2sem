@@ -1,0 +1,60 @@
+// Переменные
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$card-bg: #f9f9f9;
+$text-dark: #333;
+$text-light: white;
+
+// Миксин для кнопки
+@mixin button-style($bg-color) {
+    padding: 12px 24px;
+    background-color: $bg-color;
+    color: $text-light;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: darken($bg-color, 10%);
+    }
+}
+
+// Стили карточки
+.card {
+    width: 320px;
+    padding: 20px;
+    background-color: $card-bg;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+
+    // Вложенный селектор для изображения
+    &__image {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 15px;
+    }
+
+    // Вложенный селектор для заголовка
+    &__title {
+        color: $text-dark;
+        font-size: 22px;
+        margin-bottom: 10px;
+    }
+
+    // Вложенный селектор для описания
+    &__description {
+        color: darken($text-dark, 20%);
+        font-size: 16px;
+        line-height: 1.5;
+        margin-bottom: 20px;
+    }
+
+    // Вложенный селектор для кнопки с применением миксина
+    &__button {
+        @include button-style($secondary-color);
+        width: 100%;
+    }
+}
