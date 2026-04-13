@@ -1,0 +1,45 @@
+### Переменные
+@baseUrl = http://localhost:3000/api
+
+### 1. Регистрация пользователя
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "123456"
+}
+
+### 2. Вход в систему
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "username": "testuser",
+    "password": "123456"
+}
+
+### Сохраните полученные токены из ответа выше
+### accessToken: 
+### refreshToken: 
+
+### 3. Доступ к защищенному маршруту
+GET {{baseUrl}}/protected
+Authorization: Bearer {{accessToken}}
+
+### 4. Обновление токенов
+POST {{baseUrl}}/auth/refresh
+Content-Type: application/json
+
+{
+    "refreshToken": "{{refreshToken}}"
+}
+
+### 5. Регистрация второго пользователя
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "username": "user2",
+    "password": "password123"
+}
